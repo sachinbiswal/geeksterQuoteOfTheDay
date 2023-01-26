@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote of the day</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="data">
+        <div class="div">Starting</div>
+        <div class="div2">Soon....</div>
+        <div class="div3">
+            <img src="https://logos-world.net/wp-content/uploads/2020/05/Twitter-Logo-2010.png" alt="" height="50px" width="100px">
+        <button onclick="getData()">next</button>
+        </div>
+    </div>
+       <script>
+       
+       getData()
+       
+      async function getData(){
+
+let dataEle=document.getElementById('data')
+
+    
+   
+    let res=await fetch(`https://api.quotable.io/random`)
+    let data= await res.json();
+    console.log(data);
+
+    dataEle.innerHTML=`<div class="div"> "${data.content} "</div>
+        <div class="div2"> --${data.author}</div>
+        <div class="div3">
+            <img src="https://logos-world.net/wp-content/uploads/2020/05/Twitter-Logo-2010.png" alt="" height="50px" width="100px">
+        <button onclick="getData()">next</button>
+        </div>`   
+}
+
+
+       </script>
+</body>
+</html>
